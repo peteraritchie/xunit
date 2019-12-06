@@ -2,7 +2,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-[Target(nameof(DownloadNuGet))]
+[Target(nameof(BuildTarget.DownloadNuGet))]
 public static class DownloadNuGet
 {
     public static async Task OnExecute(BuildContext context)
@@ -10,15 +10,13 @@ public static class DownloadNuGet
         if (File.Exists(context.NuGetExe))
             return;
 
-        using (var httpClient = new HttpClient())
-        using (var stream = File.OpenWrite(context.NuGetExe))
-        {
-            context.BuildStep($"Downloading {context.NuGetUrl} to {context.NuGetExe}");
+        using var httpClient = new HttpClient();
+        using var stream = File.OpenWrite(context.NuGetExe);
+        context.BuildStep($"Downloading {context.NuGetUrl} to {context.NuGetExe}");
 
-            var response = await httpClient.GetAsync(context.NuGetUrl);
-            response.EnsureSuccessStatusCode();
+        var response = await httpClient.GetAsync(context.NuGetUrl);
+        response.EnsureSuccessStatusCode();
 
-            await response.Content.CopyToAsync(stream);
-        }
+        await response.Content.CopyToAsync(stream);
     }
 }

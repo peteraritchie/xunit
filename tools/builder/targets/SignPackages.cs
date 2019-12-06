@@ -3,20 +3,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-[Target(nameof(SignPackages),
-        nameof(Packages))]
+[Target(nameof(BuildTarget.SignPackages),
+        nameof(BuildTarget.Packages))]
 public static class SignPackages
 {
     public static async Task OnExecute(BuildContext context)
     {
-        var signClientUser = Environment.GetEnvironmentVariable("SignClientUser");
-        var signClientSecret = Environment.GetEnvironmentVariable("SignClientSecret");
-        if (signClientUser == null || signClientSecret == null)
-        {
-            context.WriteLineColor(ConsoleColor.Yellow, $"Skipping packing signing because environment variables 'SignClientUser' and/or 'SignClientSecret' are not set.{Environment.NewLine}");
-            return;
-        }
-
         var signClientFolder = Path.Combine(context.BaseFolder, "packages", $"SignClient.{context.SignClientVersion}");
         if (!Directory.Exists(signClientFolder))
         {
@@ -26,6 +18,14 @@ public static class SignPackages
         }
 
         context.BuildStep("Signing NuGet packages");
+
+        var signClientUser = Environment.GetEnvironmentVariable("SignClientUser");
+        var signClientSecret = Environment.GetEnvironmentVariable("SignClientSecret");
+        if (signClientUser == null || signClientSecret == null)
+        {
+            context.WriteLineColor(ConsoleColor.Yellow, $"Skipping packing signing because environment variables 'SignClientUser' and/or 'SignClientSecret' are not set.{Environment.NewLine}");
+            return;
+        }
 
         var appPath = Path.Combine(signClientFolder, "tools", "netcoreapp2.0", "SignClient.dll");
         var packageFiles = Directory.GetFiles(context.PackageOutputFolder, "*.nupkg", SearchOption.AllDirectories)

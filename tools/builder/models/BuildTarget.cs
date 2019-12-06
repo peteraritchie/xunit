@@ -6,7 +6,6 @@ public enum BuildTarget
     Packages,
     PushMyGet,
     Restore,
-    SetVersion,
     SignPackages,
     Test,
     TestCore,

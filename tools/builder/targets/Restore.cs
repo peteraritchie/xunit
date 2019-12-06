@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-[Target(nameof(Restore))]
+[Target(nameof(BuildTarget.Restore))]
 public static class Restore
 {
     public static Task OnExecute(BuildContext context)

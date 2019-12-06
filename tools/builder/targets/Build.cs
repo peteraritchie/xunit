@@ -1,10 +1,8 @@
-using System;
 using System.IO;
 using System.Threading.Tasks;
-using SimpleExec;
 
-[Target(nameof(Build),
-        nameof(Restore))]
+[Target(nameof(BuildTarget.Build),
+        nameof(BuildTarget.Restore))]
 public static class Build
 {
     public static async Task OnExecute(BuildContext context)
