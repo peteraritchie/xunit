@@ -2,9 +2,8 @@ public enum BuildTarget
 {
     Build,
     CI,
-    DownloadNuGet,
     Packages,
-    PushMyGet,
+    PublishPackages,
     Restore,
     SignPackages,
     Test,

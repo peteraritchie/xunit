@@ -1,3 +1,3 @@
-[Target(nameof(BuildTarget.CI),
-        nameof(BuildTarget.Test), nameof(BuildTarget.Packages), nameof(BuildTarget.SignPackages), nameof(BuildTarget.PushMyGet))]
+[Target(BuildTarget.CI,
+        BuildTarget.Test, BuildTarget.Packages, BuildTarget.SignPackages, BuildTarget.PublishPackages)]
 public class CI { }

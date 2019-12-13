@@ -8,6 +8,7 @@
     <DebugType>embedded</DebugType>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);NU5105</NoWarn>
     <!-- <OutputPath Condition=" '$(Platform)' != 'x86' ">bin\$(Configuration)</OutputPath> -->
     <!-- <OutputPath Condition=" '$(Platform)' == 'x86' ">bin\$(Configuration)_x86</OutputPath> -->
     <PackageIcon>content/logo-128-transparent.png</PackageIcon>
@@ -18,7 +19,6 @@
     <RootNamespace>Xunit</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <VersionPrefix>0.0.0-pre</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.0.28" PrivateAssets="all" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="all" />
   </ItemGroup>
 

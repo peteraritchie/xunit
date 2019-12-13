@@ -1,8 +1,8 @@
 using System.IO;
 using System.Threading.Tasks;
 
-[Target(nameof(BuildTarget.Build),
-        nameof(BuildTarget.Restore))]
+[Target(BuildTarget.Build,
+        BuildTarget.Restore)]
 public static class Build
 {
     public static async Task OnExecute(BuildContext context)

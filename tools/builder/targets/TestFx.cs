@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-[Target(nameof(BuildTarget.TestFx),
-        nameof(BuildTarget.Build))]
+[Target(BuildTarget.TestFx,
+        BuildTarget.Build)]
 public static class TestFx
 {
     public static Task OnExecute(BuildContext context)

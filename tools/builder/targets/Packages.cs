@@ -2,8 +2,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-[Target(nameof(BuildTarget.Packages),
-        nameof(BuildTarget.Build), nameof(BuildTarget.DownloadNuGet))]
+[Target(BuildTarget.Packages,
+        BuildTarget.Build)]
 public static class Packages
 {
     public static async Task OnExecute(BuildContext context)
