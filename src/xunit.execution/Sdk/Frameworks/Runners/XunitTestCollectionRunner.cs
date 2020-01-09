@@ -73,7 +73,7 @@ namespace Xunit.Sdk
         {
             var ctors = fixtureType.GetTypeInfo()
                 .DeclaredConstructors
-                .Where(ci => !ci.IsStatic && ci.IsPublic)
+                .Where(ci => !ci.IsStatic && (ci.IsPublic || ci.IsAsssembly))
                 .ToList();
 
             if (ctors.Count != 1)
